@@ -1,0 +1,91 @@
+<h1>Update Job</h1>
+<% if(errorMessage){%>
+  <div class="alert alert-danger" role="alert">
+    <ul>
+    
+   <% errorMessage.forEach((error)=>{ %>
+     <li><%= error.msg %></li>
+    <%})%>
+        
+  </ul>
+  </div>
+<% } %>
+
+<form action="/update/<%= job && job.id %>" method="post" class="p-5">
+    <div class="form-group" style="margin: 10px;">
+      <label for="companyName">Comapany</label>
+      <input
+        name="companyName"
+        type="text"
+        class="form-control"
+        id="companyName"
+        placeholder="Enter Company Name"
+        value="<%= job && job.companyName %>"
+      />
+    </div>
+    <div class="form-group" style="margin: 10px;">
+        <label for="role">Role</label>
+        <input
+        name="role"
+        type="text"
+        class="form-control"
+        id="role"
+        placeholder="Enter Role"
+        value="<%= job && job.role %>"
+      />
+    </div>
+      
+    <div class="form-group" style="margin: 10px;">
+        <label for="location">Location</label>
+        <input
+          name="location"
+          type="text"
+          class="form-control"
+          id="location"
+          placeholder="Enter Location"
+          value="<%= job && job.location %>"
+        />
+    </div>
+    <div class="form-group" style="margin: 10px;">
+      <label for="ctc">Package</label>
+      <input
+        type="text"
+        name="ctc"
+        class="form-control"
+        id="ctc"
+        value="<%= job && job.ctc %>"
+      />
+    </div>
+    <div class="form-group" style="margin: 10px;">
+        <label for="skill">Select Skills:</label>
+        <select id="skill" name="skills[]" multiple style="height: 50px;">
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="html">HTML</option>
+        </select>
+
+        <br>
+      </div>
+      <div class="form-group" style="margin: 10px;">
+        <label for="deadline">Last Date To Apply</label>
+        <input
+          type="text"
+          name="deadline"
+          class="form-control"
+          id="deadline"
+          value="<%= job && job.deadline %>"
+        />
+      </div>
+      <div class="form-group" style="margin: 10px;">
+        <label for="noOfOpenings">No.of Openings</label>
+        <input
+          type="text"
+          name="noOfOpenings"
+          class="form-control"
+          id="noOfOpenings"
+          value="<%= job && job.noOfOpenings %>"
+        />
+      </div>
+    <button class="btn btn-primary mt-2">Submit</button>
+  </form>

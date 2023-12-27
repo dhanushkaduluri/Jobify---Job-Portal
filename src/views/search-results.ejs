@@ -1,0 +1,32 @@
+
+<h2>Search Results</h2>
+
+<div>
+    <ul class="nav-bar nav me-auto mb-2 mb-lg-0">
+        <% jobs.forEach((job)=>{%>
+            <li>
+                <div class="card" style="width: 18rem; background: linear-gradient(rgb(233, 148, 148) ,rgb(146, 115, 231)); margin: 20px;">
+                    <div class="card-body">
+                      <h4 class="card-title"><%= job.companyName %></h4>
+                      <h6 class="card-subtitle mb-2 text-body-secondary">Role: <%= job.role %></h6>
+                      <p class="card-text">Location: <i class="fas fa-location-dot"></i><%= job.location %></p>
+                      <p class="card-text">Package: <%= job.ctc %></p>
+                      <p style="margin: 0%;">Skills: </p>
+                      <div style="margin-bottom: 10px;">
+                        <ul class="nav-bar nav me-auto mb-2 mb-lg-0">
+                            <% job.skills && job.skills.forEach((skill)=>{%>
+                                <li style="border: 1px solid red; padding: 1px; margin: 5px; border-radius: 5px; background-color: blanchedalmond;"> <%= skill %></li>
+                            <%})%>
+                        </ul>
+                      </div>
+                      <a href="/job-details/<%= job.id %>" class="card-link"><button class="btn btn-danger">View Details</button></a>
+                    </div>
+                  </div>
+            </li>
+        <%})%>
+        <% if(!jobs[0]){%>
+            <h3 style="margin-top: 100px; color: red;">Oop's no jobs related to your search</h3>
+        <%}%>
+
+    </ul>
+</d

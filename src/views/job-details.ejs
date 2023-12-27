@@ -1,0 +1,31 @@
+<div style="display: flex; width: 60vw; background: linear-gradient(violet,darkviolet); margin-top: 50px; border-radius: 10px;">
+    
+    <div style="display: inline-block; height: 80vh; padding: 50px; color: whitesmoke;">
+        <h2 class="card-title " style="margin: 0px 10px 10px 0px; color: rgb(168, 248, 7);text-decoration: underline;"><%= job && job.companyName %></h2>
+        <h5 style="color: rgb(144, 248, 7); ">Role: <%= job && job.role %></h5>
+        <p class="card-text">Location: <i class="fas fa-location-dot"></i><%= job && job.location %></p>
+        <p class="card-text">Package: <%= job && job.ctc %> LPA</p>
+        <p style="margin: 0%;">Skills: </p>
+        <div style="margin-bottom: 10px; color: black;">
+          <ul class="nav-bar nav me-auto mb-2 mb-lg-0">
+              <% job && job.skills.forEach((skill)=>{%>
+                  <li style="border: 1px solid red; padding: 1px; margin: 10px; border-radius: 5px; background-color: blanchedalmond;"> <%= skill %></li>
+              <%})%>
+          </ul>
+        </div>
+        <p>Number of Openings: <%= job && job.noOfOpenings %></p>
+        <% if(locals.userEmail){%>
+            <a href="/applicants/<%= job && job.id %>" style="text-decoration: none; color: antiquewhite;" ><p>Number of Applicants: <%= job && job.noOfApplicants %></p></a>
+        <%} else {%>
+            <p>Number of Applicants: <%= job && job.noOfApplicants %></p>
+        <%}%>
+        <p>Job posted on:<%= job && job.dateOfJobPosting %></p>
+        <% if(locals.userEmail){%>
+            <a href="/update/<%= job && job.id %>" ><button class="btn btn-danger" style="background-color: rgb(44, 36, 22);">Update</button></a>
+            <a href="/delete/<%= job && job.id %>" ><button class="btn btn-danger">Delete</button></a>
+        <%} else {%>
+            <a href="/apply/<%= job && job.id %>" class="card-link"><button class="btn btn-primary">Apply Now</button></a>
+        <%}%>
+    </div>
+   
+</div>
